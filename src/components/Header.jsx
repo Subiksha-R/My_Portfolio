@@ -28,7 +28,7 @@ const Header = () => {
         <li key={link.id}>
           <a
             href={`#${link.id}`}
-            className="text-white no-underline hover:text-red-500 transition duration-200"
+            className="text-hover"
           >
             {link.title}
           </a>
