@@ -6,9 +6,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        preah: ['"Preahvihear"', 'sans-serif'],
+        serifText: ['"DM Serif Text"', 'serif'],
+        mona: ['"Mona Sans"', 'sans-serif'],
+        roboto: ['"Roboto"', 'sans-serif'],
+      },
+      fontSize: {
+        'large': '3rem',
+      },
       colors: {
         backgroundPurple: "#7127BA", 
-        textHover:"#7840AD",
         textPurple: "#763CAC",       
         lightGray: "#f1f1f1",
       },
