@@ -18,9 +18,10 @@ export default {
       colors: {
         backgroundPurple: "#7127BA", 
         textPurple: "#763CAC",       
-        lightPurple: "#693B93",
+        lightPurple: "#763CAC",
         backgroundMenu: '#251C31',
-        darkPurple:'#190634'
+        darkPurple: '#461C90',
+
       },
       backgroundImage: {
         'gradient-purple': 'linear-gradient(to right, #763CAC, #461C90)',
