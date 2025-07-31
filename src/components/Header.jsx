@@ -92,7 +92,7 @@ const Header = () => {
                 </div>
 
                 {/* mobile menu icon  */}
-                <div className='md:hidden flex items-center'>
+                <div className='lg:hidden flex items-center'>
                     <motion.button
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -118,7 +118,7 @@ const Header = () => {
                     height: isOpen ? "auto" : 0,
                 }}
                 transition={{ duration: 0.2 }}
-                className='md:hidden overflow-hidden bg-backgroundMenu shadow-lg px-4 py-5 space-y-5'>
+                className='lg:hidden overflow-hidden bg-backgroundMenu shadow-lg px-4 py-5 space-y-5'>
                 <nav className='flex flex-col justify-center px-7 space-y-3'>
                     {["Home", "About", "Projects", "Experience", "Contact"].map((item) => (
                         <motion.a

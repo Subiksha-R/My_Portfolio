@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import Header from './components/Header';
 import Test from './components/Test';
 import Home from './components/Home';
+import CustomCursor from './components/CustomCursor';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -11,8 +12,9 @@ function App() {
   return (
     <>
       <Header/>
-      <Home/>
-      {/* Test/> */}
+      <Home />
+      {/* <CustomCursor/> */}
+      {/* <Test/> */}
     </>
   )
 }

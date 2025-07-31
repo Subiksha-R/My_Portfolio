@@ -4,6 +4,16 @@
 
 @layer base {
     body {
-        @apply font-preah bg-[#11071F] text-white w-full overflow-x-hidden scroll-smooth relative;
+        @apply font-preah bg-[#11071F] text-white w-full overflow-x-hidden scroll-smooth relative cursor-none;
+    }
+}
+
+@layer utilities {
+    .bg-center-to-top {
+        background: radial-gradient(ellipse at center,
+                rgba(168, 85, 247, 0.7) 0%,
+                transparent 60%);
+        background-position: top center;
+        background-repeat: no-repeat;
     }
 }
