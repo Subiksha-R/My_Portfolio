@@ -19,7 +19,7 @@ function Home() {
                     </div>
                     <div className='intro-content w-[40%]'>
                         <p>A Designer who <br /><span className='text-large'>Judges a book
-                            by its <span className='text-textPurple'>cover</span>                                                       ...</span></p>
+                            by its <span className='text-textPurple'>cover</span> ...</span></p>
                         <p>Because if the cover does not impress you what else can?</p>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ const Header = () => {
     ];
 
     return (
-        <header className='absolute w-full z-50 transition-all duration-300'>
+        <header className=' w-full z-50 transition-all duration-300'>
             <div className=" container mx-auto px-4 sm:px-6 lg:px-8  w-full flex items-center justify-between">
 
                 {/* Logo at the start */}
@@ -82,7 +82,6 @@ const Header = () => {
                         whileTap={{ scale: 0.95 }}
                         className="block py-2 px-4 rounded-3xl bg-gradient-to-r from-darkPurple to-lightPurple text-white text-lg font-bold"
                         onClick={() => {
-                            toggleMenu()
                             setTimeout((() => {
                                 openContactForm()
                             }), [100])
@@ -155,7 +154,6 @@ const Header = () => {
                     </div>
 
                     <motion.button onClick={() => {
-                        toggleMenu()
                         setTimeout((() => {
                             openContactForm()
                         }), [100])
@@ -176,7 +174,7 @@ const Header = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className='fixed inset-0 bg-black/50 background-blur-sm z-50 flex items-center justify-center p-4'
+                        className='fixed inset-0 bg-black/50 background-blur-sm z-50 flex items-center justify-center p-4 '
                     >
                         <motion.div
                             initial={{ scale: 0.8, opacity: 0, y: 30 }}

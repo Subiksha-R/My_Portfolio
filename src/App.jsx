@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 function App() {
   return (
     <>
-      <Header />
-      {/* <Home/> */}
+      <Header/>
+      <Home/>
       {/* Test/> */}
     </>
   )
