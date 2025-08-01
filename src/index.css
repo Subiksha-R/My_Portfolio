@@ -4,7 +4,8 @@
 
 @layer base {
     body {
-        @apply font-preah bg-[#11071F] text-white w-full overflow-x-hidden scroll-smooth relative cursor-none;
+        @apply font-preah bg-[#11071F] text-white w-full overflow-x-hidden scroll-smooth relative 
+        ;
     }
 }
 
