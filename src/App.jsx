@@ -5,6 +5,7 @@ import Test from './components/Test';
 import Home from './components/Home';
 import CustomCursor from './components/CustomCursor';
 import About from './components/About';
+import TiltCardTest from './components/TiltCardTest';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -12,9 +13,10 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 function App() {
   return (
     <>
-      <Header/>
+      {/* <Header/>
       <Home />
-      <About />
+      <About /> */}
+      <TiltCardTest />
       {/* <CustomCursor/> */}
       {/* <Test/> */}
     </>
