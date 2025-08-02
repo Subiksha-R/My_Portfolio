@@ -1,80 +1,97 @@
 import React, { useRef } from "react";
+import gsap from "gsap";
 
 const TiltCardTest = () => {
-    const cardsRef = useRef([]);
+  const cardsRef = useRef([]);
 
-    const handleMouseMove = (e, index) => {
-        const card = cardsRef.current[index];
-        if (!card) return;
+  const handleMouseMove = (e, index) => {
+    const card = cardsRef.current[index];
+    if (!card) return;
 
-        const rect = card.getBoundingClientRect();
-        const cardX = e.clientX - rect.left;
-        const cardY = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+    const rect = card.getBoundingClientRect();
+    const cardX = e.clientX - rect.left;
+    const cardY = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-        const rotateX = ((cardY - centerY) / centerY) * 10;
-        const rotateY = ((cardX - centerX) / centerX) * 10;
+    const rotateX = ((cardY - centerY) / centerY) * 10;
+    const rotateY = ((cardX - centerX) / centerX) * 10;
 
-        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+    gsap.to(card, {
+      duration: 0.3,
+      rotateX: -rotateX,
+      rotateY: rotateY,
+      ease: "power2.out",
+    });
 
-        const bg = card.querySelector(".card-bg");
-        if (bg) {
-            bg.style.transform = `translateX(${(cardX - centerX) / 10}px) translateY(${(cardY - centerY) / 10}px)`;
-        }
-    };
+    const bg = card.querySelector(".card-bg");
+    if (bg) {
+      gsap.to(bg, {
+        duration: 0.3,
+        x: (cardX - centerX) / 10,
+        y: (cardY - centerY) / 10,
+        ease: "power2.out",
+      });
+    }
+  };
 
-    const handleMouseLeave = (index) => {
-        const card = cardsRef.current[index];
-        if (!card) return;
+  const handleMouseLeave = (index) => {
+    const card = cardsRef.current[index];
+    if (!card) return;
 
-        card.style.transform = "rotateX(0deg) rotateY(0deg)";
-        const bg = card.querySelector(".card-bg");
-        if (bg) {
-            bg.style.transform = "translateX(0px) translateY(0px)";
-        }
-    };
+    gsap.to(card, {
+      duration: 0.5,
+      rotateX: 0,
+      rotateY: 0,
+      ease: "power2.out",
+    });
 
-    return (
-        <>
-            <h1 className="title">Interactive Tilt Cards</h1>
-            <div className="container">
-                {[1, 2, 3].map((_, i) => (
-                    <div
-                        key={i}
-                        className="card-wrap"
-                        onMouseMove={(e) => handleMouseMove(e, i)}
-                        onMouseLeave={() => handleMouseLeave(i)}
-                    >
-                        <div
-                            className="card"
-                            ref={(el) => (cardsRef.current[i] = el)}
-                        >
-                            <div
-                                className="card-bg"
-                                style={{
-                                    backgroundImage: `url(https://source.unsplash.com/random/300x400?sig=${i})`,
-                                }}
-                            />
-                            <div className="card-info">
-                                <h1>Card {i + 1}</h1>
-                                <p>This is a 3D tilt card</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+    const bg = card.querySelector(".card-bg");
+    if (bg) {
+      gsap.to(bg, {
+        duration: 0.5,
+        x: 0,
+        y: 0,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  return (
+    <>
+      <h1 className="title">Interactive Tilt Cards with GSAP</h1>
+      <div className="container">
+        {[1, 2, 3].map((_, i) => (
+          <div
+            key={i}
+            className="card-wrap"
+            onMouseMove={(e) => handleMouseMove(e, i)}
+            onMouseLeave={() => handleMouseLeave(i)}
+          >
+            <div
+              className="card"
+              ref={(el) => (cardsRef.current[i] = el)}
+            >
+              <div
+                className="card-bg"
+                style={{
+                  backgroundImage: `url(https://source.unsplash.com/random/300x400?sig=${i})`,
+                }}
+              />
+              <div className="card-info">
+                <h1>Card {i + 1}</h1>
+                <p>This is a 3D tilt card with GSAP</p>
+              </div>
             </div>
+          </div>
+        ))}
+      </div>
 
-            <style jsx>{`
-        body {
-          font-family: 'Raleway', sans-serif;
-          background-color: #BCAAA4;
-        }
-
+      <style jsx>{`
         .title {
           font-size: 24px;
           font-weight: 700;
-          color: #5D4037;
+          color: #5d4037;
           text-align: center;
           margin: 40px 0;
         }
@@ -100,7 +117,7 @@ const TiltCardTest = () => {
           background-color: #333;
           border-radius: 10px;
           overflow: hidden;
-          transition: transform 0.2s ease;
+          transform-style: preserve-3d;
         }
 
         .card-bg {
@@ -110,7 +127,6 @@ const TiltCardTest = () => {
           background-size: cover;
           background-position: center;
           filter: brightness(0.75);
-          transition: transform 0.2s ease;
           z-index: 1;
         }
 
@@ -132,8 +148,8 @@ const TiltCardTest = () => {
           margin: 0;
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 };
 
 export default TiltCardTest;

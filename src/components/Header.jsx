@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <header className=' w-full z-50 transition-all duration-300'>
-            <div className=" container mx-auto px-4 sm:px-6 lg:px-8  w-full flex items-center justify-between">
+            <div className="mx-auto px-10 sm:px-6 lg:px-8  w-full flex items-center justify-between">
 
                 {/* Logo at the start */}
                 <motion.div
