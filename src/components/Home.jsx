@@ -40,7 +40,7 @@ function Home() {
 
     return (
         <div className="w-full py-0 sm:py-2 md:py-4 lg:py-16 xl:py-16 flex items-center justify-center relative">
-            <div className=' w-[90%] lg:w-[70%] flex flex-col gap-10'>
+            <div className='w-[80%] mx-auto flex flex-col gap-10'>
 
                 <div className='flex items-center justify-center '>
                     <p

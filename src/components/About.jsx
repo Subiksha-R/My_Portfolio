@@ -11,7 +11,7 @@ const About = () => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#about",
-                start: "top 80%",
+                start: "top 70%",
             },
         });
 
@@ -34,30 +34,20 @@ const About = () => {
 
     return (
         <div id="about"  className="w-full h-auto py-16 sm:py-20 lg:py-16 xl:py-16 flex items-center justify-center relative">
-            <div className='w-[90%] sm:w-[70%] lg:w-[60%] flex flex-col justify-center items-center sm:items-start gap-5'>
+            <div className='w-[80%] mx-auto flex flex-col justify-center items-center sm:items-start gap-5'>
                 <h2
                     className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl">
                     I'm a <span className="text-textPurple">Software Engineer</span>
                 </h2>
 
+                <div className="flex items-center gap-2 text-sm sm:text-lg lg:text-xl xl:text-2xl">
+                    <span>Currently, I'm a Software Engineer at</span>
+                    <span className="text-textPurple" >Facebook</span>
+                </div>
+
+
                 <p
-                    className="flex items-center gap-2 text-sm sm:text-lg lg:text-xl xl:text-2xl">
-
-                    Currently, I'm a Software Engineer at
-
-                    <span className="w-[20px] h-[20px]  md:w-[30px] md:h-[30px] flex-shrink-0 inline-block">
-
-                        <img
-                            src="/images/logo.png"
-                            alt="logo"
-                            className="w-full h-full object-contain"
-                        />
-
-                    </span>
-                    Facebook
-                </p>
-                <p
-                    className="lg:text-lg text-justify text-gray-300">
+                    className=" text-sm lg:text-lg text-justify text-gray-300">
                     A self-taught UI/UX designer, functioning in the industry for 3+ years now.
                     I make meaningful and delightful digital products that create an equilibrium
                     between user needs and business goals.

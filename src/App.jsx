@@ -14,13 +14,13 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 function App() {
   return (
     <>
-      <Header/>
+      {/* <Header/>
       <Home />
       <About />
-      <WorkExperience/>
+      <WorkExperience/> */}
       {/* <TiltCardTest /> */}
       {/* <CustomCursor/> */}
-      {/* <Test/> */}
+      <Test/>
     </>
   )
 }

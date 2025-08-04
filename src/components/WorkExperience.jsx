@@ -4,6 +4,25 @@ import "../index.css";
 
 const WorkExperience = () => {
   const cardsRef = useRef([]);
+  const experiences = [
+    {
+      role: "Frontend Developer",
+      company: "Cloudrevel Innovations Pvt. Ltd.",
+      duration: "Feb 2024 – Present",
+      description:
+        "Worked on a banking web application using React.js, HTML, CSS, and PHP. Handled UI development, API integration, and front-end logic.",
+      tech: ["React.js", "HTML", "CSS", "PHP", "REST APIs"],
+    },
+    {
+      role: "Intern – Web Developer",
+      company: "S-Tech Solutions",
+      duration: "Jun 2023 – Nov 2023",
+      description:
+        "Built mini-projects, collaborated with developers, and strengthened JavaScript and frontend development fundamentals.",
+      tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
+    },
+  ];
+
 
 const handleMouseMove = (e, index) => {
   const card = cardsRef.current[index];
@@ -61,25 +80,32 @@ const handleMouseMove = (e, index) => {
   };
 
   return (
-    <div id="experience" className="w-full h-auto py-4 sm:py-20 lg:py-16 xl:py-16 flex items-center justify-center relative ">
-      <div className='w-[90%] sm:w-[70%] lg:w-[60%] flex flex-col justify-center items-center sm:items-start gap-5'>
+    <div id="experience" className="w-full h-auto py-4  flex items-center justify-center relative ">
+      <div className='w-[80%] mx-auto flex flex-col justify-center items-center sm:items-start gap-5'>
 
         <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl"> Work Experience </h1>
-        <div className="container">
+        <div className=" w-full pt-10 flex items-center justify-between">
           {[1,2].map((i) => (
             <div
               key={i}
-              className="card-wrap"
+              className="m-2 [perspective:800px] [transform-style:preserve-3d] cursor-pointer"
               onMouseMove={(e) => handleMouseMove(e, i)}
               onMouseLeave={() => handleMouseLeave(i)}
             >
               <div
-                className="card"
-                ref={(el) => (cardsRef.current[i] = el)}
+                className="relative bg-[#333] rounded-[10px] overflow-hidden [transform-style:preserve-3d] w-[680px] h-[300px] "
+                ref={(el) => (cardsRef.current[i] = el)}  
               >
                 <div
-                  className="card-bg"
+                  className= "absolute w-full h-full z-[1] bg-[linear-gradient(45deg,_#11071F_0%,_rgba(53,29,77,0.6)_50%,_#11071F_100%)] bg-cover bg-center"
                 />
+                <div>
+                  {experiences.map((exp, index) => (
+                    <div>
+                    
+                    </div>
+                  ))}
+                </div>
 
               </div>
             </div>
