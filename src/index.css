@@ -18,25 +18,20 @@
         background-repeat: no-repeat;
     }
 }
-
-
-
-/* work experience */
-
-.card-info {
-    position: absolute;
-    bottom: 0;
-    color: white;
-    z-index: 2;
-    padding: 20px;
+.circle-center {
+    background-image: radial-gradient(circle 180px at 50% 100%, #763CAC, #11071F);
 }
 
-.card-info h1 {
-    font-size: 20px;
-    margin: 0 0 10px 0;
+.circle-left {
+    background-image: radial-gradient(circle 180px at 10% 50%, #763CAC, #11071F  );
 }
 
-.card-info p {
-    font-size: 14px;
-    margin: 0;
+.circle-right {
+    background-image: radial-gradient(circle 180px at 90% 50%, #763CAC, #11071F);
+}
+
+.shine-letter {
+    display: inline-block;
+    opacity: 0.4;
+    transition: color 0.3s ease;
 }

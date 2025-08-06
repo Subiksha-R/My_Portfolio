@@ -1,114 +1,123 @@
-import React, { useRef } from "react";
-import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
 import "../index.css";
+import StarSvg from "./StarSvg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"; 
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WorkExperience = () => {
   const cardsRef = useRef([]);
-  const experiences = [
-    {
-      role: "Frontend Developer",
-      company: "Cloudrevel Innovations Pvt. Ltd.",
-      duration: "Feb 2024 – Present",
-      description:
-        "Worked on a banking web application using React.js, HTML, CSS, and PHP. Handled UI development, API integration, and front-end logic.",
-      tech: ["React.js", "HTML", "CSS", "PHP", "REST APIs"],
-    },
-    {
-      role: "Intern – Web Developer",
-      company: "S-Tech Solutions",
-      duration: "Jun 2023 – Nov 2023",
-      description:
-        "Built mini-projects, collaborated with developers, and strengthened JavaScript and frontend development fundamentals.",
-      tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
-    },
-  ];
+  const containerRef = useRef(null);
+  const text = 'Software Engineer';
+  const textRef = useRef(null);
 
+  useGSAP(() => {
+    const h1Split = SplitText.create("#experience h1", { type: "words" });
 
-const handleMouseMove = (e, index) => {
-  const card = cardsRef.current[index];
-  if (!card) return;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#experience",
+        start: "top 80%",
+      },
+    });
 
-  const rect = card.getBoundingClientRect();
-  const cardX = e.clientX - rect.left;
-  const cardY = e.clientY - rect.top;
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
+    tl.from(h1Split.words, {
+      opacity: 0,
+      yPercent: 100,
+      duration: 1,
+      ease: "expo.out",
+      stagger: 0.05,
+    })
 
-  const rotateX = ((cardY - centerY) / centerY) * 10;
-  const rotateY = ((cardX - centerX) / centerX) * 10;
-
-  gsap.to(card, {
-    duration: 0.3,
-    rotateX: -rotateX,
-    rotateY: rotateY,
-    scale: 1.05, 
-    ease: "power2.out",
+    tl.from(cardsRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.3,
+      ease: "power3.out",
+    }, "+=0.2"); 
   });
 
-  const bg = card.querySelector(".card-bg");
-  if (bg) {
-    gsap.to(bg, {
-      duration: 0.3,
-      rotateX: 0,
-      rotateY: 0,
-      ease: "power2.out",
+  useEffect(() => {
+    if (cardsRef.current.length === 0) return;
+
+    cardsRef.current.forEach((card, i) => {
+      const letters = card.querySelectorAll(".shine-letter");
+      if (!letters.length) return;
+
+      gsap.fromTo(
+        letters,
+        { opacity: 0.4 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.05,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: i * 0.5, // stagger between cards
+        }
+      );
     });
-  }
-};
+  }, []);
 
-  const handleMouseLeave = (index) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
+  useEffect(() => {
+    if (cardsRef.current.length === 0) return;
 
-    gsap.to(card, {
-      duration: 0.5,
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1, // reset scale
-      ease: "power2.out",
+    gsap.from(cardsRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
     });
+  }, []);
 
-    const bg = card.querySelector(".card-bg");
-    if (bg) {
-      gsap.to(bg, {
-        duration: 0.5,
-        x: 0,
-        y: 0,
-        ease: "power2.out",
-      });
-    }
-  };
-
+  
+  
   return (
-    <div id="experience" className="w-full h-auto py-4  flex items-center justify-center relative ">
+    <div id="experience"
+      ref={containerRef}
+      className="w-full h-auto py-10 sm:py-15 lg:py-14 xl:py-16 flex items-center justify-center relative ">
       <div className='w-[80%] mx-auto flex flex-col justify-center items-center sm:items-start gap-5'>
 
-        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl"> Work Experience </h1>
-        <div className=" w-full pt-10 flex items-center justify-between">
-          {[1,2].map((i) => (
-            <div
-              key={i}
-              className="m-2 [perspective:800px] [transform-style:preserve-3d] cursor-pointer"
-              onMouseMove={(e) => handleMouseMove(e, i)}
-              onMouseLeave={() => handleMouseLeave(i)}
-            >
-              <div
-                className="relative bg-[#333] rounded-[10px] overflow-hidden [transform-style:preserve-3d] w-[680px] h-[300px] "
-                ref={(el) => (cardsRef.current[i] = el)}  
-              >
-                <div
-                  className= "absolute w-full h-full z-[1] bg-[linear-gradient(45deg,_#11071F_0%,_rgba(53,29,77,0.6)_50%,_#11071F_100%)] bg-cover bg-center"
-                />
-                <div>
-                  {experiences.map((exp, index) => (
-                    <div>
-                    
-                    </div>
-                  ))}
+        <h1 className="text-xl  sm:text-2xl lg:text-3xl xl:text-4xl"> Work Experience </h1>
+        <div className="flex items-center justify-between w-full gap-6">
+          {[1, 2].map((i,index) => (
+            <div key={i}
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="w-full h-auto py-8 flex flex-col items-center relative">
+              <div className="w-[600px] h-[200px] circle-center translate-x-[-10px] -rotate-3">
+                <StarSvg />
+              </div>
+              <div className="w-[600px] h-[250px] bg-diagonal-purple rounded-2xl mt-5 translate-x-[10px] rotate-2 flex items-center">
+                <div className="text-white p-6 space-y-4 flex justify-between items-center gap-8">
+                  <div className="w-[150px] h-[150px] flex items-center">
+                    <img src="/images/logo.png" />
+                  </div>
+                  <div className="space-y-4">
+                    <h2 ref={textRef} className="text-3xl text-white font-semibold">
+                      {text.split('').map((char, i) => (
+                        <span key={i} className="shine-letter">
+                          {char}
+                        </span>
+                      ))}
+                    </h2>
+                    <p  className="text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi, id.</p>
+                    <button className="bg-[#3f2853] p-3 border border-gray-500 rounded-3xl"> Learn More</button>
+                  </div>
                 </div>
-
               </div>
             </div>
+
           ))}
         </div>
       </div>

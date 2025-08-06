@@ -17,14 +17,15 @@ export default {
       },
       colors: {
         backgroundPurple: "#7127BA", 
-        textPurple: "#763CAC",       
-        lightPurple: "#763CAC",
+        textPurple: "#763CAC", 
         backgroundMenu: '#251C31',
         darkPurple: '#461C90',
 
       },
       backgroundImage: {
         'gradient-purple': 'linear-gradient(to right, #763CAC, #461C90)',
+        'diagonal-purple': 'linear-gradient(45deg, #11071F 0%, #763CAC 50%, #11071F 100%)',
+
       },
       screens: {
         'sm': '640px',   // Small devices

@@ -1,67 +1,42 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { SplitText } from "gsap/all";
 
-const Test = () => {
-  const textRef = useRef(null);
+const RobertDeveloper = () => {
+  const titleRef = useRef(null);
 
   useEffect(() => {
-    gsap.to(textRef.current, {
-      backgroundPosition: "200% 50%",
-      duration: 80,
-      ease: "linear",
-      repeat: -1,
-    });
+    const handleMouseMove = (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const traX = (4 * mouseX) / window.innerWidth * 10 + 40;
+      const traY = (4 * mouseY) / window.innerHeight * 10 + 50;
+
+      gsap.to(titleRef.current, {
+        backgroundPosition: `${traX}% ${traY}%`,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        margin: 0,
-        background: "#090d00",
-        color: "rgba(255,255,255,0.25)",
-        fontFamily: '"Neuton", serif',
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <p
-        style={{
-          textTransform: "uppercase",
-          letterSpacing: "0.5em",
-          borderTop: "4px double rgba(255,255,255,0.25)",
-          borderBottom: "4px double rgba(255,255,255,0.25)",
-          padding: "1.5em 0",
-          width: "40em",
-          textAlign: "center",
-        }}
-      >
-        <span
-          ref={textRef}
-          style={{
-            font: "700 4em/1 Oswald, sans-serif",
-            letterSpacing: "0",
-            padding: ".25em 0 .325em",
-            display: "block",
-            margin: "0 auto",
-            textShadow: "0 0 80px rgba(255,255,255,0.5)",
-            background: "url(https://i.ibb.co/3M2Lkzr/purple-text-fill.png) repeat-y",
-            backgroundSize: "200% auto",
-            backgroundPosition: "0% 50%",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            WebkitTransform: "translate3d(0,0,0)",
-            WebkitBackfaceVisibility: "hidden",
-          }}
-        >
-          Cloudrevel
-        </span>
-        Software Engineer
+    <div className="w-screen h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#ebece7] to-white font-raleway relative overflow-hidden">
+      <h1
+        ref={titleRef}
+        className="title-text text-[50px] font-bold text-transparent bg-[url('/images/lines-purple.jpg')] bg-repeat bg-[length:200%_200%] bg-[40%_50%] bg-clip-text leading-[90px] tracking-[-0.2em] text-center select-none"
+      >        ROBERT DEVELOPER
+
+      </h1>
+      <p className="uppercase text-center pt-2 text-base tracking-widest text-gray-700">
+        geek + smart + curious + nerd + ingenious + cunning = ME
       </p>
     </div>
   );
 };
 
-export default Test;
+export default RobertDeveloper;

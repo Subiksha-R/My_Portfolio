@@ -33,7 +33,7 @@ const About = () => {
 
 
     return (
-        <div id="about"  className="w-full h-auto py-16 sm:py-20 lg:py-16 xl:py-16 flex items-center justify-center relative">
+        <div id="about"  className="w-full h-auto py-10 sm:py-15 lg:py-14 xl:py-16 flex items-center justify-center relative">
             <div className='w-[80%] mx-auto flex flex-col justify-center items-center sm:items-start gap-5'>
                 <h2
                     className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl">
@@ -41,8 +41,8 @@ const About = () => {
                 </h2>
 
                 <div className="flex items-center gap-2 text-sm sm:text-lg lg:text-xl xl:text-2xl">
-                    <span>Currently, I'm a Software Engineer at</span>
-                    <span className="text-textPurple" >Facebook</span>
+                    <p>Currently, I'm a Software Engineer at    
+                    <span className="text-textPurple"> Facebook</span></p>
                 </div>
 
 
@@ -51,7 +51,7 @@ const About = () => {
                     A self-taught UI/UX designer, functioning in the industry for 3+ years now.
                     I make meaningful and delightful digital products that create an equilibrium
                     between user needs and business goals.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni deleniti expedita soluta tenetur quisquam sequi provident ex, ratione quos, culpa ipsam quidem unde minus aperiam eaque quod! Quo repellendus nemo iure numquam optio, quis modi quasi cum cumque 
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi debitis ducimus autem sint praesentium, nulla voluptatum quo saepe asperiores. Itaque asperiores perferendis, repellendus provident reprehenderit quidem deserunt. Eligendi, labore? 
                 </p>
             </div>
         </div>

@@ -50,7 +50,7 @@ function Home() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-evenly gap-[50px] sm:gap-[100px]">
                     <div className="w-[60%] sm:w-[40%] lg:w-[30%] h-[60%] rounded-full bg-center-to-top shadow-lg flex justify-center items-center">
-                        <div className="w-[60%]">
+                        <div className="w-[40%]">
                             <img
                                 src={profileIcon}
                                 alt="Icon"
